@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  main:
+    image: go-helloworld:v1.0.0
+    build: .
+    restart: always
+    ports:
+      - 6111:6111
+    command: ./helloworld
+    
