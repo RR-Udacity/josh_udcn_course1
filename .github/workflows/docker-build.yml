@@ -16,5 +16,5 @@ jobs:
         uses: docker/build-push-action@v2.7.0
         with:
           context: ./exercises/python-helloworld/
-          tags: user/app:latest
+          tags: jdhaines/python-helloworld:latest
           push: true
