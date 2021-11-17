@@ -24,7 +24,7 @@ def metrics():
     if request.method == 'GET':
         app.logger.info('Metrics request successful')
         return response
-    
+
 # Status Endpoint
 @app.route('/status', methods=["GET"])
 def status():
@@ -38,4 +38,4 @@ def status():
         return jsonify(data)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=8080)
