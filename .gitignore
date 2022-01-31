@@ -3,3 +3,4 @@ __pycache__
 .pdm.toml
 app.log
 .vagrant/
+project/techtrends/database.db
