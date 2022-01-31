@@ -1,5 +1,5 @@
 name: Build & Push Docker Image
-on: [push]
+on: workflow-dispatch
 jobs:
   docker:
     runs-on: ubuntu-latest

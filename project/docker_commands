@@ -13,6 +13,7 @@ docker-compose logs -f
 ## Logs from the container running the TechTrends application
 
 ```bash
+  ~/git/udcn_course1/project  main ❯ docker-compose logs -f
 Attaching to project_web_1
 web_1  |  * Serving Flask app "app" (lazy loading)
 web_1  |  * Environment: production
@@ -25,4 +26,15 @@ web_1  | [2022-01-31 21:58:54,793] INFO in _internal: 172.22.0.1 - - [31/Jan/202
 web_1  | [2022-01-31 21:58:54,897] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 21:58:54] "GET /favicon.ico HTTP/1.1" 404 -
 web_1  | [2022-01-31 21:59:40,767] INFO in app: About Page was accessed.
 web_1  | [2022-01-31 21:59:40,769] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 21:59:40] "GET /about HTTP/1.1" 200 -
+web_1  | [2022-01-31 22:34:15,342] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:15] "GET /create HTTP/1.1" 200 -
+web_1  | [2022-01-31 22:34:20,285] INFO in app: New post titled: New Post was created.
+web_1  | [2022-01-31 22:34:20,286] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:20] "POST /create HTTP/1.1" 302 -
+web_1  | [2022-01-31 22:34:20,290] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:20] "GET / HTTP/1.1" 200 -
+web_1  | [2022-01-31 22:34:33,639] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:33] "GET /healthz HTTP/1.1" 200 -
+web_1  | [2022-01-31 22:34:39,616] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:39] "GET /metrics HTTP/1.1" 200 -
+web_1  | [2022-01-31 22:34:44,036] INFO in app: About Page was accessed.
+web_1  | [2022-01-31 22:34:44,037] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:44] "GET /about HTTP/1.1" 200 -
+web_1  | [2022-01-31 22:34:47,368] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:47] "GET / HTTP/1.1" 200 -
+web_1  | [2022-01-31 22:34:48,532] INFO in app: Post: KubeCon + CloudNativeCon 2021 was accessed.
+web_1  | [2022-01-31 22:34:48,534] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:48] "GET /2 HTTP/1.1" 200 -
 ```
