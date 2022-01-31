@@ -32,7 +32,7 @@ requires_python = ">=3.6"
 summary = "Safely pass data to untrusted environments and back."
 
 [[package]]
-name = "Jinja2"
+name = "jinja2"
 version = "3.0.3"
 requires_python = ">=3.6"
 summary = "A very fast and expressive template engine."
@@ -41,7 +41,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "MarkupSafe"
+name = "markupsafe"
 version = "2.0.1"
 requires_python = ">=3.6"
 summary = "Safely add untrusted strings to HTML/XML markup."
@@ -54,7 +54,7 @@ summary = "The comprehensive WSGI web application library."
 
 [metadata]
 lock_version = "3.1"
-content_hash = "sha256:97323520c551d8237fc15d4654783aceae14e88a63991b7d53d236fbd296cdbc"
+content_hash = "sha256:aba9d0b6a51d5f1646da46ecd1470b4e31a4e7fab9dc8e8e2f9196cc3ceb039e"
 
 [metadata.files]
 "click 8.0.3" = [

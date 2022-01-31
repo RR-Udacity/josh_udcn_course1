@@ -5,7 +5,9 @@ description = ""
 authors = [
     {name = "Josh Haines", email = "Josh@JoshHaines.com"},
 ]
-dependencies = ["flask==1.1.1", "werkzeug==0.16.1"]
+dependencies = [
+    "flask==1.1.1",
+    "werkzeug==0.16.1"]
 requires-python = ">=3.9"
 license = {text = "MIT"}
 

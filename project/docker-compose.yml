@@ -1,0 +1,7 @@
+services:
+  web:
+    image: techtrends
+    build: .
+    command: python -m app
+    ports:
+      - "7111:3111"

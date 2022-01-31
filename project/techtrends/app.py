@@ -1,7 +1,25 @@
 import sqlite3
 
-from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
+from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash, Response
 from werkzeug.exceptions import abort
+from logging.config import dictConfig
+
+# Configure Logging
+dictConfig({
+    'version': 1,
+    'formatters': {'default': {
+        'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
+    }},
+    'handlers': {'wsgi': {
+        'class': 'logging.StreamHandler',
+        'stream': 'ext://flask.logging.wsgi_errors_stream',
+        'formatter': 'default'
+    }},
+    'root': {
+        'level': 'INFO',
+        'handlers': ['wsgi']
+    }
+})
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
@@ -22,6 +40,21 @@ def get_post(post_id):
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
 
+# HealthCheck
+@app.route('/healthz')
+def healthz():
+    return Response('{"result": "OK - health"}', status=200, mimetype='application/json')
+
+# Metrics
+@app.route('/metrics')
+def metrics():
+    connection = get_db_connection()
+    posts = connection.execute('SELECT * FROM posts').fetchall()
+    post_count = len(posts)
+    conn_count = connection.total_changes
+    msg = '"db_connection_count": {}, "post_count": {}'.format(conn_count, post_count)
+    return Response(msg, status=200, mimetype='application/json')
+
 # Define the main route of the web application 
 @app.route('/')
 def index():
@@ -36,13 +69,16 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
+      app.logger.info('Nonexistant post access was attempted, id: {}'.format(post_id))
       return render_template('404.html'), 404
     else:
+      app.logger.info("Post: {} was accessed.".format(post['title']))
       return render_template('post.html', post=post)
 
 # Define the About Us page
 @app.route('/about')
 def about():
+    app.logger.info('About Page was accessed.')
     return render_template('about.html')
 
 # Define the post creation functionality 
@@ -59,6 +95,7 @@ def create():
             connection.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
                          (title, content))
             connection.commit()
+            app.logger.info("New post titled: {} was created.".format(title))
             connection.close()
 
             return redirect(url_for('index'))
@@ -67,4 +104,6 @@ def create():
 
 # start the application on port 3111
 if __name__ == "__main__":
+    # server = Server(app.wsgi_app)
    app.run(host='0.0.0.0', port='3111')
+    # server.serve(port=3111)

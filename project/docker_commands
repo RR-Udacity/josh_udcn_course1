@@ -1,11 +1,28 @@
-## Docker commands used to build the application 
-# TODO: insert the docker build command
+## Docker commands used to build the application
+
+docker-compose up -d --build
 
 ## Docker commands used to run the application
-# TODO: insert the docker run command
+
+see above
 
 ## Docker commands used to get the application logs
-# TODO: insert the docker logs command
+
+docker-compose logs -f
 
 ## Logs from the container running the TechTrends application
-# TODO: paste logs from the Docker container 
+
+```bash
+Attaching to project_web_1
+web_1  |  * Serving Flask app "app" (lazy loading)
+web_1  |  * Environment: production
+web_1  |    WARNING: This is a development server. Do not use it in a production deployment.
+web_1  |    Use a production WSGI server instead.
+web_1  |  * Debug mode: off
+web_1  | [2022-01-31 21:58:53,788] INFO in _internal:  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+web_1  | [2022-01-31 21:58:54,740] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 21:58:54] "GET / HTTP/1.1" 200 -
+web_1  | [2022-01-31 21:58:54,793] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 21:58:54] "GET /static/css/main.css HTTP/1.1" 200 -
+web_1  | [2022-01-31 21:58:54,897] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 21:58:54] "GET /favicon.ico HTTP/1.1" 404 -
+web_1  | [2022-01-31 21:59:40,767] INFO in app: About Page was accessed.
+web_1  | [2022-01-31 21:59:40,769] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 21:59:40] "GET /about HTTP/1.1" 200 -
+```
