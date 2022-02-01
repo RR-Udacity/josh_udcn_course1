@@ -10,3 +10,5 @@ COPY ./techtrends/requirements.txt .
 RUN pip install --upgrade pip -r requirements.txt
 COPY ./techtrends .
 RUN python -m init_db
+EXPOSE 3111
+CMD ["python", "-m", "app"]

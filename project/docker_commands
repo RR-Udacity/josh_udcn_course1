@@ -1,40 +1,40 @@
 ## Docker commands used to build the application
 
-docker-compose up -d --build
+<!-- docker-compose up -d --build -->
+docker build .
 
 ## Docker commands used to run the application
 
-see above
+<!-- see above -->
+docker run -d -p 3111:3111 90c
 
 ## Docker commands used to get the application logs
 
-docker-compose logs -f
+docker ps
+<!-- get sha from the container -->
+docker logs fa4 -f
 
 ## Logs from the container running the TechTrends application
 
 ```bash
-  ~/git/udcn_course1/project  main ❯ docker-compose logs -f
-Attaching to project_web_1
-web_1  |  * Serving Flask app "app" (lazy loading)
-web_1  |  * Environment: production
-web_1  |    WARNING: This is a development server. Do not use it in a production deployment.
-web_1  |    Use a production WSGI server instead.
-web_1  |  * Debug mode: off
-web_1  | [2022-01-31 21:58:53,788] INFO in _internal:  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-web_1  | [2022-01-31 21:58:54,740] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 21:58:54] "GET / HTTP/1.1" 200 -
-web_1  | [2022-01-31 21:58:54,793] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 21:58:54] "GET /static/css/main.css HTTP/1.1" 200 -
-web_1  | [2022-01-31 21:58:54,897] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 21:58:54] "GET /favicon.ico HTTP/1.1" 404 -
-web_1  | [2022-01-31 21:59:40,767] INFO in app: About Page was accessed.
-web_1  | [2022-01-31 21:59:40,769] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 21:59:40] "GET /about HTTP/1.1" 200 -
-web_1  | [2022-01-31 22:34:15,342] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:15] "GET /create HTTP/1.1" 200 -
-web_1  | [2022-01-31 22:34:20,285] INFO in app: New post titled: New Post was created.
-web_1  | [2022-01-31 22:34:20,286] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:20] "POST /create HTTP/1.1" 302 -
-web_1  | [2022-01-31 22:34:20,290] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:20] "GET / HTTP/1.1" 200 -
-web_1  | [2022-01-31 22:34:33,639] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:33] "GET /healthz HTTP/1.1" 200 -
-web_1  | [2022-01-31 22:34:39,616] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:39] "GET /metrics HTTP/1.1" 200 -
-web_1  | [2022-01-31 22:34:44,036] INFO in app: About Page was accessed.
-web_1  | [2022-01-31 22:34:44,037] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:44] "GET /about HTTP/1.1" 200 -
-web_1  | [2022-01-31 22:34:47,368] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:47] "GET / HTTP/1.1" 200 -
-web_1  | [2022-01-31 22:34:48,532] INFO in app: Post: KubeCon + CloudNativeCon 2021 was accessed.
-web_1  | [2022-01-31 22:34:48,534] INFO in _internal: 172.22.0.1 - - [31/Jan/2022 22:34:48] "GET /2 HTTP/1.1" 200 -
+* Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 252-455-278
+[2022-02-01 20:39:48,744] ERROR in app: Nonexistant post access was attempted, id: 19
+172.17.0.1 - - [01/Feb/2022 20:39:48] "GET /19 HTTP/1.1" 404 -
+[2022-02-01 20:39:53,606] INFO in app: Post: CNCF Cloud Native Interactive Landscape was accessed.
+172.17.0.1 - - [01/Feb/2022 20:39:53] "GET /4 HTTP/1.1" 200 -
+172.17.0.1 - - [01/Feb/2022 20:39:57] "GET /healthz HTTP/1.1" 200 -
+172.17.0.1 - - [01/Feb/2022 20:40:01] "GET /metrics HTTP/1.1" 200 -
+172.17.0.1 - - [01/Feb/2022 20:40:04] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [01/Feb/2022 20:40:05] "GET /create HTTP/1.1" 200 -
+[2022-02-01 20:40:07,958] INFO in app: New post titled: asdf was created.
+172.17.0.1 - - [01/Feb/2022 20:40:07] "POST /create HTTP/1.1" 302 -
+172.17.0.1 - - [01/Feb/2022 20:40:07] "GET / HTTP/1.1" 200 -
 ```
