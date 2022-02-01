@@ -45,7 +45,7 @@ app.config['SECRET_KEY'] = 'your secret key'
 def healthz():
     return Response('{"result": "OK - health"}', status=200, mimetype='application/json')
 
-# Metrics
+# Metrics page
 @app.route('/metrics')
 def metrics():
     connection = get_db_connection()
